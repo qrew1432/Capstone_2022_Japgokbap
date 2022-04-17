@@ -2,45 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    #region Private
+    #region "Pulbic"
+    public GameObject player;
+    //싱글톤
+    public static GameManager instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                m_instance = FindObjectOfType<GameManager>();
+            }
 
-    private GameObject loginpanel;
-    private GameObject lobbypanel;
+            return m_instance;
+        }
+    }
+    public int minute;
+    public float second;
+    public Text timerText;
 
     #endregion
 
-    #region Public
+    #region "Private"
 
-    [Header("Scenes")]
-    public Scene samplescene;
+    private static GameManager m_instance;
 
-    [Header("UI")]
-    public Text sample;
+    #endregion
 
-    #endregion 
+    #region "Public Methods"
 
-    void Start()
+    private void FixedUpdate() 
     {
-        loginpanel = GameObject.Find("LoginPanel");
-        lobbypanel = GameObject.Find("LobbyPanel");
+        StartTimer();
     }
 
-    public void ActivePanel(GameObject panel)
+    public Vector3 GetPlayerPosition()
     {
-        panel.SetActive(true);
+        return player.transform.position;
     }
 
-    public void DeativePanel(GameObject panel)
+    #endregion
+
+    #region "Private Methods"
+
+    private void StartTimer()
     {
-        panel.SetActive(false);
+        second += Time.deltaTime;
+
+        timerText.text = string.Format("{0:D2}:{1:D2}", minute, (int)second);
+
+        if((int)second > 59)
+        {
+            second = 0;
+            minute++;
+        }
     }
 
-    public void Gamestart()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
+    #endregion
 }
