@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     [Header ("Move")]
     #region Private
-        private GameObject player;
+    private GameObject player;
     #endregion
 
     [Header ("CameraSettingValues")]
@@ -25,13 +25,14 @@ public class CameraMovement : MonoBehaviour
         SetCameraValue();
     }
 
-    void Update(){
+    void FixedUpdate(){
         FollowCamera();
     }
     void FollowCamera(){
+        // 카메라 보간
+        transform.rotation = Quaternion.Euler(cameraAngleX, cameraAngleY, cameraAngleZ);
         //추후 카메라 조정이 필요할 때를 대비하여 플레이어의 위치에 설정한 카메라값을 넣도록 작성
         transform.position = new Vector3(player.transform.position.x + cameraPositionX, player.transform.position.y + cameraPositionY, player.transform.position.z + cameraPositionZ);
-        transform.rotation = Quaternion.Euler(cameraAngleX, cameraAngleY, cameraAngleZ);
     }
 
     void FindGameObject(string name){
