@@ -7,18 +7,18 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject attackPrefab;
     public float attackDelay;
 
-    private Transform playerTransform;
+    private GameObject player;
     private Animator playerAnimator;
 
     void Start(){
-        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
-        playerAnimator = GetComponent<Animator>();
+        player = GameObject.FindWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
     }
 
     public IEnumerator Attack(float delay){
         //플레이어 오브젝트의 앞쪽 방향에 생성
-        GameObject spawnPrefab = Instantiate(attackPrefab, transform.position + transform.forward, transform.rotation);
-        spawnPrefab.transform.parent = playerTransform;
+        GameObject spawnPrefab = Instantiate(attackPrefab, player.transform.position + player.transform.forward, player.transform.rotation);
+        spawnPrefab.transform.parent = player.transform;
         //공격 애니메이션 적용
         playerAnimator.SetTrigger("doSlash");
 

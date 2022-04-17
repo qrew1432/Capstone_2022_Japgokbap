@@ -53,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate() {
         Move();
+    }
+
+    private void Update() {
         AttackToMouse();
         Skill_Q();
         Skill_E();
@@ -87,13 +90,13 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetMouseButtonDown(0)){
                 //행동 제한
                 lockBehaviour =true;
-                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+                //Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
                 
-                RaycastHit rayHit;
-                if(Physics.Raycast(ray, out rayHit)){
-                    Vector3 mouseDir = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
-                    transform.rotation = Quaternion.LookRotation(mouseDir);
-                }
+                //RaycastHit rayHit;
+                //if(Physics.Raycast(ray, out rayHit)){
+                    //Vector3 mouseDir = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
+                    //transform.rotation = Quaternion.LookRotation(mouseDir);
+                //}
                 attack.StartCoroutine(attack.Attack(attack.attackDelay));
             }
         }

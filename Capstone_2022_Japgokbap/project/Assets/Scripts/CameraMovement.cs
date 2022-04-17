@@ -20,12 +20,12 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float cameraAngleZ;
     #endregion
 
-    void Start(){
+    void Awake(){
         FindGameObject("Player");
         SetCameraValue();
     }
 
-    void FixedUpdate(){
+    void Update(){
         FollowCamera();
     }
     void FollowCamera(){

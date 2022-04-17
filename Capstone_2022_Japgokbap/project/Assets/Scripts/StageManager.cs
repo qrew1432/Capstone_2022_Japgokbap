@@ -71,11 +71,6 @@ public class StageManager : MonoBehaviour
         StartCoroutine(SpawnMonsters());
     }
 
-    void Update()
-    {
-        
-    }
-
     #region "Public Methods"
 
     #endregion
