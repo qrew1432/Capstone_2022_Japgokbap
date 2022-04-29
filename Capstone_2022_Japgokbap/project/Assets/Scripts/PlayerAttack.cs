@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {    
     [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private GameObject attackParticle;
     public float attackDelay;
 
     private GameObject player;
@@ -18,7 +19,9 @@ public class PlayerAttack : MonoBehaviour
     public IEnumerator Attack(float delay){
         //플레이어 오브젝트의 앞쪽 방향에 생성
         GameObject spawnPrefab = Instantiate(attackPrefab, player.transform.position + player.transform.forward, player.transform.rotation);
+        GameObject spawnParticle = Instantiate(attackParticle, player.transform.position + player.transform.forward, player.transform.rotation);
         spawnPrefab.transform.parent = player.transform;
+        spawnParticle.transform.parent = player.transform;
         //공격 애니메이션 적용
         playerAnimator.SetTrigger("doSlash");
 
@@ -27,13 +30,6 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(delay);
         PlayerMovement.lockBehaviour = false;
         Destroy(spawnPrefab);
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if(other.tag=="Monster"){
-            //추후 체력 감소로 바꿀 예정
-            Debug.Log("tag");
-            Destroy(other.gameObject);
-        }
+        Destroy(spawnParticle);
     }
 }

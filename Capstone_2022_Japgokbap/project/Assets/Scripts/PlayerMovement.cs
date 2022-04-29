@@ -90,13 +90,13 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetMouseButtonDown(0)){
                 //행동 제한
                 lockBehaviour =true;
-                //Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
                 
-                //RaycastHit rayHit;
-                //if(Physics.Raycast(ray, out rayHit)){
-                    //Vector3 mouseDir = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
-                    //transform.rotation = Quaternion.LookRotation(mouseDir);
-                //}
+                RaycastHit rayHit;
+                if(Physics.Raycast(ray, out rayHit)) {
+                    Vector3 mouseDir = new Vector3(rayHit.point.x, transform.position.y, rayHit.point.z) - transform.position;
+                    transform.rotation = Quaternion.LookRotation(mouseDir);
+                }
                 attack.StartCoroutine(attack.Attack(attack.attackDelay));
             }
         }
@@ -104,17 +104,35 @@ public class PlayerMovement : MonoBehaviour
 
 //아래의 스킬들은 임시로 특정 키를 지정하여 사용되게 작성해놓았음. 
     private void Skill_Q(){
-        if(!lockBehaviour){
+        if(!lockBehaviour) // & PlayerData.Instance.SkillCheck(1)){
+        {
             if(Input.GetKeyDown(KeyCode.Q)){
                 seismWave.StartCoroutine(seismWave.DoSeismWave());
             }
         }else return;
     }
     private void Skill_E(){
-        if(!lockBehaviour){
+        if(!lockBehaviour) //& PlayerData.Instance.SkillCheck(2)){
+        {
             if(Input.GetKeyDown(KeyCode.E)){
                 bladeStorm.StartCoroutine(bladeStorm.DoBladeStorm());
             }
         }else return;
+    }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        if(other.transform.CompareTag("Monster"))
+        {
+            PlayerData.Instance.playerMaxHP -= 10.0f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.CompareTag("EXP")){
+            PlayerData.Instance.PlayerExpCalc(100.0f);
+            Destroy(other.gameObject);
+        }
     }
 }

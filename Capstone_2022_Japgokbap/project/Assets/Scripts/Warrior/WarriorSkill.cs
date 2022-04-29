@@ -41,8 +41,8 @@ public class WarriorSkill : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.tag=="Monster"){
             //추후 체력 감소로 바꿀 예정
-            Debug.Log("tag");
-            Destroy(other.gameObject);
+            //Debug.Log("tag");
+            //Destroy(other.gameObject);
         }
     }
 }

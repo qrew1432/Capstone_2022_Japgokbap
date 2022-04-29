@@ -39,6 +39,10 @@ public class StageManager : MonoBehaviour
     public int spawnerCount;
     public bool roundEnded;
 
+    [Header ("Objects")]
+    public GameObject expClones;
+    public GameObject expObject;
+
     [Header ("1-1")]
     public GameObject monsters1;
     public int count1;
@@ -63,6 +67,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Monster[] skeletons;
     [SerializeField] private Monster[] goblins;
     [SerializeField] private Monster[] orcs;
+
 
     #endregion
 

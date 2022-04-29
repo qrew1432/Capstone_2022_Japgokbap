@@ -7,10 +7,10 @@ public class WarriorBladeStorm : WarriorSkill
     public IEnumerator DoBladeStorm(){
         if(readySkill){
             readySkill = false;
-            //playerAnimator.SetTrigger("doSeismWave");
+            playerAnimator.SetTrigger("doBladeStorm");
             yield return new WaitForSeconds(animDelay);
 
-            GameObject instantePrefab= Instantiate(skillPrefab, transform.position, transform.rotation);
+            GameObject instantePrefab= Instantiate(skillPrefab, transform.position, Quaternion.identity);
             instantePrefab.transform.parent = playerTransform;
             yield return new WaitForSeconds(duration);
             

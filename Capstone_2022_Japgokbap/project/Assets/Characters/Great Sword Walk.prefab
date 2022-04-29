@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850215351}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.18861021, y: -0, z: -0, w: 0.982052}
+  m_LocalPosition: {x: 0, y: 2.98, z: -4.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3142316528585102592}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.743, y: 0, z: 0}
 --- !u!20 &850215355
 Camera:
   m_ObjectHideFlags: 0
@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 261564590}
   - component: {fileID: 261564591}
   - component: {fileID: 261564594}
+  - component: {fileID: 5749371119450932441}
   m_Layer: 0
   m_Name: Great Sword Walk
   m_TagString: Player
@@ -927,7 +928,7 @@ MonoBehaviour:
   skillPrefab: {fileID: 4131891160570470766, guid: 4f1e5fb064c8e3c4cb1d97919987d0e9, type: 3}
   coolTime: 10
   animDelay: 2
-  duration: 3
+  duration: 2
   Damage: 0
 --- !u!114 &261564589
 MonoBehaviour:
@@ -963,7 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 8812030697612040980, guid: 3a2f1f3c86f7f7747a7eb2a33b20a52d, type: 3}
-  attackDelay: 1
+  attackDelay: 0.65
 --- !u!114 &261564591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,6 +995,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!136 &5749371119450932441
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2364408046984564666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0.1}
 --- !u!1 &2485731629493001118
 GameObject:
   m_ObjectHideFlags: 0

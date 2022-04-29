@@ -5,10 +5,29 @@ using UnityEngine.AI;
 
 public class Skeletons : Monster
 {
-    void FixedUpdate() 
+    void Update() 
     {
-        NavMesh.SamplePosition(GameManager.instance.GetPlayerPosition(), out NavMeshHit hit, 1f, 1);
+        if(enemyHp > 0)
+        {
+            NavMesh.SamplePosition(GameManager.instance.GetPlayerPosition(), out NavMeshHit hit, 1f, 1);
 
-        this.MyNavMesh.SetDestination(hit.position);
+            this.MyNavMesh.SetDestination(hit.position);
+        }
+        else
+        {
+            SpawnExpObjet();
+            Destroy(this.gameObject);
+        }
+    }
+
+    protected override void SpawnExpObjet()
+    {
+        GameObject expClone = Instantiate(StageManager.instance.expObject, this.transform.position , Quaternion.identity);
+        expClone.transform.parent = StageManager.instance.expClones.transform;
+    }
+
+    protected override void GetDamaged()
+    {
+        this.enemyHp--;
     }
 }

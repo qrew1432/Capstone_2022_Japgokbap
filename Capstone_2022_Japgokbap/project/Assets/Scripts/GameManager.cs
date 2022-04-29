@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     #region "Public Methods"
 
-    private void FixedUpdate() 
+    private void Update() 
     {
         StartTimer();
     }

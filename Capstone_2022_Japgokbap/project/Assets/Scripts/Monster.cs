@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Monster : MonoBehaviour
+public abstract class Monster : MonoBehaviour
 {
-    public NavMeshAgent MyNavMesh { get; private set; }
+    protected NavMeshAgent MyNavMesh { get; private set; }
+    public float enemyHp = 1.0f;
 
     void Start()
     {
         MyNavMesh = GetComponent<NavMeshAgent>();
     }
+
+    protected abstract void SpawnExpObjet();
+
+    protected abstract void GetDamaged();
 }
