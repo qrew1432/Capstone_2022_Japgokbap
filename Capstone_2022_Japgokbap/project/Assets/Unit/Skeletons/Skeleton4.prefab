@@ -68,7 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda72ea32d6b3724cac315b5f4b734b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 1
+  m_enemyHp: 410
+  m_enemyOffensePower: 240
+  m_enemyDefensePower: 30
+  m_enemyExperience: 0
 --- !u!136 &1666894579105827578
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -118,6 +121,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1218088509098763490, guid: 4049c4c1d2fdaee49981a4e44d1bc300, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8fc33559437b6954d98515a55cd8e17c, type: 2}
     - target: {fileID: 1218088509098763490, guid: 4049c4c1d2fdaee49981a4e44d1bc300, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0

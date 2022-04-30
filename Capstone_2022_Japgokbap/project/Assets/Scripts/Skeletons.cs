@@ -5,9 +5,15 @@ using UnityEngine.AI;
 
 public class Skeletons : Monster
 {
+    [Header ("Enemy Stats")]
+    [SerializeField] protected int m_enemyHp;
+    [SerializeField] protected int m_enemyOffensePower;
+    [SerializeField] protected int m_enemyDefensePower;
+    [SerializeField] protected int m_enemyExperience;
+
     void Update() 
     {
-        if(enemyHp > 0)
+        if(m_enemyHp > 0)
         {
             NavMesh.SamplePosition(GameManager.instance.GetPlayerPosition(), out NavMeshHit hit, 1f, 1);
 
@@ -28,6 +34,6 @@ public class Skeletons : Monster
 
     protected override void GetDamaged()
     {
-        this.enemyHp--;
+        this.m_enemyHp--;
     }
 }

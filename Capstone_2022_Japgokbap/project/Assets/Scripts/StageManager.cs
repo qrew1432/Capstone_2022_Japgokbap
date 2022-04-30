@@ -68,6 +68,8 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Monster[] goblins;
     [SerializeField] private Monster[] orcs;
 
+    [Header ("Special Monsters")]
+    [SerializeField] private Monster[] specialMonsters;
 
     #endregion
 

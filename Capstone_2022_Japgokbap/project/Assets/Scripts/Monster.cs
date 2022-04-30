@@ -6,7 +6,11 @@ using UnityEngine.AI;
 public abstract class Monster : MonoBehaviour
 {
     protected NavMeshAgent MyNavMesh { get; private set; }
-    public float enemyHp = 1.0f;
+
+    protected int enemyHp;
+    protected int enemyOffensePower;
+    protected int enemyDefensePower;
+    protected int enemyExperience;
 
     void Start()
     {

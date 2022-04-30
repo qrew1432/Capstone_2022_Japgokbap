@@ -8,26 +8,32 @@ public class LobbyManager : MonoBehaviour
 {
     #region Private
 
-    private GameObject loginpanel;
-    private GameObject lobbypanel;
+    private static LobbyManager m_instance;
+
+    [Header ("Panels")]
+    [SerializeField] private GameObject loginPanel;
+    [SerializeField] private GameObject lobbyPanel;
 
     #endregion
 
     #region Public
 
-    [Header("Scenes")]
-    public Scene samplescene;
-
-    [Header("UI")]
-    public Text sample;
-
-    #endregion 
-
-    void Start()
+    public static LobbyManager instance
     {
-        loginpanel = GameObject.Find("LoginPanel");
-        lobbypanel = GameObject.Find("LobbyPanel");
+        get
+        {
+            if (m_instance == null)
+            {
+                m_instance = FindObjectOfType<LobbyManager>();
+            }
+
+            return m_instance;
+        }
     }
+
+    #endregion
+
+    #region Public Methods
 
     public void ActivePanel(GameObject panel)
     {
@@ -41,6 +47,8 @@ public class LobbyManager : MonoBehaviour
 
     public void Gamestart()
     {
-        SceneManager.LoadScene("GameScene");
+        LoadingSceneManager.LoadScene("GameScene");
     }
+
+    #endregion
 }

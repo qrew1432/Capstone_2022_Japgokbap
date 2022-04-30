@@ -18,6 +18,8 @@ public class PlayerData : MonoBehaviour
         }
             
     }
+
+    [SerializeField] private Dictionary<byte, Skills> playerSkills;
     
     public static PlayerData instance;
     public GameObject ItemEXP;

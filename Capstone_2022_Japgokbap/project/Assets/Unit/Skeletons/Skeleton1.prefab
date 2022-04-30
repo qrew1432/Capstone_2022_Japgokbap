@@ -1128,7 +1128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda72ea32d6b3724cac315b5f4b734b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 1
+  m_enemyHp: 290
+  m_enemyOffensePower: 110
+  m_enemyDefensePower: 25
+  m_enemyExperience: 0
 --- !u!136 &1666894579105827578
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2372,7 +2375,7 @@ Animator:
   m_GameObject: {fileID: 8901463727552591924}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8e688bc8258b83244b7a1ff73fb87e5b, type: 3}
-  m_Controller: {fileID: 9100000, guid: 02c959640e3313444b4ed7c3ead6a6af, type: 2}
+  m_Controller: {fileID: 9100000, guid: b17a7794d81c8a14685122a10ff5b3eb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
